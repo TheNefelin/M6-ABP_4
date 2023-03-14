@@ -1,0 +1,37 @@
+nav {
+    background-color: black;
+    padding: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+}
+
+a:hover {
+    color: red;
+}
+
+li {
+    max-width: 20rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+.agregar {
+    display: flex;
+    justify-content: center;
+}
+
+.agregar button {
+    padding: 1rem;
+    margin: 1rem;
+}
