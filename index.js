@@ -17,9 +17,19 @@ app.get("/", (req, res) => {
     });
 });
 
-app.get("/eliminar", (req, res) => {
-    console.log(req.params['id']);
-    res.render("eliminar");
+app.get("/eliminar/:myId", (req, res) => {
+    const id = req.params['myId'];
+    fs.readFile("./data/data.json", (err, data) => {
+        if (err) throw err
+        Promise.all([
+            ... Object.values(JSON.parse(data))[0]
+        ])
+        .then(dt => {
+            dt = {id: id, ... dt[id]}
+            console.log(dt)
+            res.render("eliminar", dt);
+        })
+    });
 });
 
 app.get("/crear", (req, res) => {
