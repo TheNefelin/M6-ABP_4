@@ -18,9 +18,10 @@ app.get("/", (req, res) => {
 });
 
 app.get("/eliminar", (req, res) => {
-    fs.readFile("./data/data.json", (err, data) => {
-        if (err) throw err
-        const dt =  JSON.parse(data);
-        res.render("eliminar", dt);
-    });
-})
+    console.log(req.params['id']);
+    res.render("eliminar");
+});
+
+app.get("/crear", (req, res) => {
+    res.render("crear");
+});

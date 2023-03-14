@@ -1,17 +1,21 @@
 {{#> plantilla}}
     <section>
+        <h1>Menú</h1>
         <ul>
             {{#each almuerzos}}
                 <li>
-                    <span><button>X</button> {{nombre}}</span>
+                    <span>
+                        <a id={{@index}} class="btn" href="/eliminar">&#x2715;</a> 
+                        {{nombre}}
+                    </span>
                     <span>{{precio}}</span>
                 </li>
             {{/each}}
         </ul>
     </section>
     <div class="agregar">
-        <a href="/eliminar">
-            <button>Agregar Nuevo Item</button>
+        <a class="btn" href="/crear">
+            Agregar Nuevo Item
         </a>
     </div>
 {{/plantilla}}

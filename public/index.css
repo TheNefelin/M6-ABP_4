@@ -14,12 +14,14 @@ a:hover {
 }
 
 li {
+    margin: 0.5rem;
     max-width: 20rem;
     display: flex;
     justify-content: space-between;
 }
 
 footer {
+    margin-top: 1rem;
     background-color: black;
     color: white;
     text-align: center;
@@ -34,4 +36,15 @@ footer {
 .agregar button {
     padding: 1rem;
     margin: 1rem;
+}
+
+.btn {
+    color: white;
+    background-color: rgb(73, 73, 73);
+    padding: 5px;
+    border: 1px solid black;
+}
+
+form {
+    margin-top: 1rem;
 }
