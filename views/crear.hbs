@@ -1,10 +1,10 @@
 {{#> plantilla}}
     <section>
         <h1>Crear Item</h1>
-        <form>
-            <input type="text" placeholder="Nombre">
-            <input type="number" placeholder="Precio">
-            <a class="btn" href="">Crear</a>
+        <form action="/crear" method="get" role="form">  
+            <input type="text" name="nombre" placeholder="Nombre">
+            <input type="number" name="precio" placeholder="Precio">
+            <input type="submit" class="btn" value="Crear">
         </form>
     </section>
 {{/plantilla}}
