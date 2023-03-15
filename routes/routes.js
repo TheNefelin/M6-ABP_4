@@ -4,27 +4,19 @@ import * as fs from "fs"
 const myRoutes = Router();
 
 myRoutes.get("/", (req, res) => {
-    leerArchivo().then(data => console.log(data))
-
-    fs.readFile("./data/data.json", (err, data) => {
-        if (err) throw err
-        const dt =  JSON.parse(data);
-        res.render("index", dt);
+    leerArchivo().then(data => {
+        res.render("index", data);
     });
 });
 
 myRoutes.get("/eliminar/:id", (req, res) => {
     const id = req.params['id'];
     
-    fs.readFile("./data/data.json", (err, data) => {
-        if (err) throw err
-        const dt =  JSON.parse(data);
-        dt.almuerzos.splice(id,1);
-        
-        fs.writeFile("./data/data.json", JSON.stringify(dt), err => {
-            if (err) throw err
-        });
-
+    leerArchivo().then(data => {
+        data.almuerzos.splice(id, 1);
+        escribirArchivo(data);
+        return data
+    }).then((dt) => {
         res.render("index", dt);
     });
 });
@@ -34,23 +26,29 @@ myRoutes.get("/crear", (req, res) => {
 });
 
 myRoutes.post("/crear", (req, res) => {
-    fs.readFile("./data/data.json", (err, data) => {
-        if (err) throw err
-        const dt =  JSON.parse(data);
-        dt.almuerzos.push({nombre: req.body.nombre, precio: req.body.precio});
+    leerArchivo().then(data => {
+        if(req.body.nombre && req.body.precio) {
+            data.almuerzos.push({nombre: req.body.nombre, precio: req.body.precio});
+            escribirArchivo(data);
+        };
         
-        fs.writeFile("./data/data.json", JSON.stringify(dt), err => {
-            if (err) throw err
-        });
-
+        return data
+    }).then((dt) => {
         res.render("index", dt);
     });
 });
 
-function leerArchivo() {
-    fs.readFile("./data/data.json", (err, data) => {
+async function leerArchivo() {
+    const data = await fs.promises.readFile("./data/data.json", (err, data) => {
+        if (err) throw err 
+        return data
+    });
+    return await JSON.parse(data);
+}
+
+async function escribirArchivo(data) {
+    fs.writeFile("./data/data.json", JSON.stringify(data), err => {
         if (err) throw err
-        return JSON.parse(data);
     });
 }
 

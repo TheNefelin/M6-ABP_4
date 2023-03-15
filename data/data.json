@@ -1,1 +1,16 @@
-{"almuerzos":[{"nombre":"cazuela","precio":5990},{"nombre":"carbonada","precio":4990},{"nombre":"arroz","precio":1000}]}
+{
+    "almuerzos": [
+        {
+            "nombre": "cazuela",
+            "precio": 5990
+        },
+        {
+            "nombre": "carbonada",
+            "precio": 4990
+        },
+        {
+            "nombre": "arroz",
+            "precio": 1000
+        }
+    ]
+}
