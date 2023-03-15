@@ -1,7 +1,10 @@
+// npm install express
+// npm install hbs
+// npm init
+
 const express = require("express");
 const hbs = require("hbs");
 const fs = require("fs");
-const router = express.Router();
 
 const app = express();
 
