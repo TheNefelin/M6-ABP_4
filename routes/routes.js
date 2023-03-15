@@ -4,6 +4,8 @@ import * as fs from "fs"
 const myRoutes = Router();
 
 myRoutes.get("/", (req, res) => {
+    leerArchivo().then(data => console.log(data))
+
     fs.readFile("./data/data.json", (err, data) => {
         if (err) throw err
         const dt =  JSON.parse(data);
@@ -44,5 +46,12 @@ myRoutes.post("/crear", (req, res) => {
         res.render("index", dt);
     });
 });
+
+function leerArchivo() {
+    fs.readFile("./data/data.json", (err, data) => {
+        if (err) throw err
+        return JSON.parse(data);
+    });
+}
 
 export default myRoutes;
