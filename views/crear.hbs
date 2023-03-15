@@ -1,9 +1,9 @@
 {{#> plantilla}}
     <section>
         <h1>Crear Item</h1>
-        <form action="/crear" method="get" role="form">  
-            <input type="text" name="nombre" placeholder="Nombre">
-            <input type="number" name="precio" placeholder="Precio">
+        <form action="crear" method="post">  
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+            <input type="number" id="precio" name="precio" placeholder="Precio">
             <input type="submit" class="btn" value="Crear">
         </form>
     </section>
